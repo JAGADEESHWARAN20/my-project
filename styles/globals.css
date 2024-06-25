@@ -1,0 +1,181 @@
+@tailwind base; 
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for all browsers */
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+body {
+  
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer/Edge */
+}
+
+/* Add scroll effect */
+body {
+  overflow: auto;
+
+}
+
+/* Optional: customize scrollbar appearance if needed */
+/* For Chrome, Safari */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent; /* Optionally, set background color */
+}
+
+/* For Firefox */
+::-webkit-scrollbar-track {
+  background: transparent; /* Optionally, set background color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Optionally, set thumb color */
+}
+
+
+@keyframes fadeDown {
+  from {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-down {
+  animation-name: fadeDown;
+  animation-duration: 0.3s; /* Adjust duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust timing function as needed */
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fadeUP {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+}
+
+.animate-fade-up {
+  animation-name: fadeUP;
+  animation-duration: 0.3s; /* Adjust duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust timing function as needed */
+  animation-fill-mode: forwards;
+}
+
+
+
+.overflow-scroll {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+/* Global Stylesheet */
+.custom-cursorbar {
+  border-radius: 50%;
+}
+
+
+
+.social-icons-container.open {
+  right: 0;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon svg {
+  width: 80%;
+  height: 80%;
+  fill: #fff;
+}
+
+
+    
+  .logo-container {
+
+    position: relative;
+    margin-top: 20px;
+    margin-left: 0;
+
+  }
+
+  .logo-container:before {
+    content: "";
+    position: absolute;
+    top: calc(80% - 2px);
+    width: 100%;
+    height: 2px;
+    transform-origin: center center;
+    transform: scaleX(0);
+  }
+
+  .lineanime{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:2px;
+    animation: line-animation 2.5s ease infinite alternate;
+  }
+  /* Define custom properties for clip path position */
+  h1#page-logo {
+    font: bold 2rem 'poppins', sans-serif;
+  }
+  
+    
+    h1#page-logo{
+      font-size: 20px;
+    }
+
+
+@keyframes line-animation {
+  0% {
+    transform: scaleX(.25);
+    top: 100%;
+    left: 0;
+  }
+
+  50% {
+    transform: scaleX(1);
+    left: 0;
+  }
+
+  100% {
+    transform: scaleX(0.7);
+
+    top: 100%;
+    left: 0;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Adjust animation duration */
+}
+
+.fade-in.show {
+  opacity: 1;
+}
