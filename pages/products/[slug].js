@@ -1,26 +1,49 @@
 // pages/products/[slug].js
 
-// Import necessary modules
 import { useRouter } from 'next/router';
 
 // Define the getStaticPaths function
 export async function getStaticPaths() {
-  // Fetch and return a list of possible paths
+  // Return a list of possible paths
   return {
     paths: [
-      { params: { slug: 'some-slug' } },
+      { params: { slug: 'example-product' } },
       // Add more paths as needed
     ],
-    fallback: false, // or true depending on your needs
+    fallback: false,
+  };
+}
+
+// Define the getStaticProps function
+export async function getStaticProps({ params }) {
+  // Use static data for demonstration
+  const product = {
+    name: 'Example Product',
+    description: 'This is a description of the example product.',
+  };
+
+  // Return the product data as props
+  return {
+    props: {
+      product,
+    },
   };
 }
 
 // Define the Next.js page component
-export default function ProductPage() {
-  // Access router to get the slug parameter
+export default function ProductPage({ product }) {
   const router = useRouter();
-  const { slug } = router.query;
 
-  // Use the slug to render content dynamically
-  return <div>This is the product page for: {slug}</div>;
+  // If the page is not yet generated, this will show a loading state
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  // Use the product data to render the content
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+    </div>
+  );
 }
