@@ -2,12 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"; 
 import { FaArrowRight } from "react-icons/fa";
-import {gsap} from 'gsap'; 
+
 import LoadingScreen from "./Loadingscreen";
+import { BiDownload } from "react-icons/bi";
+
 
 
 
 const Portfolio: React.FC = () => {
+
+const handleDownload = () => {
+  const pdfPath = '/resume.pdf'; // Adjust the path as per your project structure
+
+  // Create a link element
+  const link = document.createElement('a');
+  link.href = pdfPath;
+  link.download = 'resume.pdf'; // Set the desired file name for download
+  document.body.appendChild(link);
+
+  // Trigger the click event to start download
+  link.click();
+
+  // Clean up
+  document.body.removeChild(link);
+};
+
  useEffect(() => {
   const handleMouseMove = (e: MouseEvent) => {
    const cursor = document.getElementById("customCursor");
@@ -599,11 +618,10 @@ const projects = [
           )}
          </div>
         </div>
-       </div>
-         <div className=" w-[200px] bg-opacity-15 px-4 pl-[30px] py-2 rounded-[6px] items-center gap-3 duration-100 mt-5 backdrop-blur-md flex text-white text-opacity-25 hover:gap-5  hover:text-slate-200  cursor-pointer">
-      Resume 
-      <FaArrowRight />
-     </div>
+             </div>
+              <a href="#" onClick={handleDownload} className="w-[200px] bg-opacity-15 px-4 pl-[30px] py-2 rounded-[6px] items-center gap-3 duration-100 mt-5 backdrop-blur-md flex text-white text-opacity-25 hover:gap-5 hover:text-slate-200 cursor-pointer">
+      <BiDownload /> Resume <FaArrowRight />
+    </a>
       </div>
      </div>
      <div   onMouseEnter={()=>mouseItemEnter("project")} id='project' className=" sm:w-[92%] lg:w-3/4 items-start flex relative flex-col ml-[20px]  ">
