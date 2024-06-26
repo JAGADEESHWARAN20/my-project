@@ -36,6 +36,11 @@ const config: Config = {
       },
     },
   },
+  variants: {
+    extend: {
+      rotate: ['group-hover'],
+    },
+  },
   plugins: [],
 };
 

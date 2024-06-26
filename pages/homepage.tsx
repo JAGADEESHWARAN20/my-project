@@ -253,7 +253,26 @@ const projects = [
  const buttonstyles = {ResumeButton:"px-5 text-opacity-30 w-[250px] py-2 flex hover:gap-4 items-center duration-100 gap-2 text-slate-300 capitalize hover:text-slate-200 cursor-pointer duration-50 ",Button:"px-5 text-opacity-30 w-[250px] py-2 flex hover:gap-4 items-center duration-100 gap-2 text-slate-300 capitalize hover:text-slate-200 cursor-pointer duration-50 "}
 
 
- 
+ const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsExpanded(!isExpanded);
+  };
+  const styles = {
+  container: 'sm:w-[490px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
+  header: 'flex justify-between items-center p-4 cursor-pointer',
+  headerText: 'text-lg font-semibold',
+  icon: 'transform transition-transform duration-300',
+  list: 'max-h-0 overflow-hidden transition-all duration-500 ease-in-out',
+  listItem: 'p-4 border-t border-white cursor-pointer hover:bg-white hover:px-[43px] duration-300 hover:text-black',
+  expanded: 'max-h-[500px]',
+  textColor: 'text-white',
+  bgColor: 'bg-blue-300',
+  hoverBgColor: 'hover:bg-blue-300 hover:bg-opacity-25',
+  borderColor: 'border-white',
+  transition: 'transition-all duration-500 ease-in-out',
+  cubicBezier: 'transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)',
+};
 
 
  return (
@@ -437,6 +456,27 @@ const projects = [
        {about}
       </div>
      </div>
+
+          
+   <div className={`${styles.container}`}>
+      <div className={`${styles.header}`} onClick={toggleDropdown}>
+        <span className={`${styles.headerText}`}>Skills</span>
+        <span className={`${styles.icon} ${isExpanded ? 'rotate-180' : ''}`}>
+          ▼
+        </span>
+      </div>
+      <div className={`${styles.list} ${isExpanded ? styles.expanded : ''}`}>
+        <div className={`${styles.listItem}`}>HTML</div>
+        <div className={`${styles.listItem}`}>CSS</div>
+        <div className={`${styles.listItem}`}>JavaScript</div>
+        <div className={`${styles.listItem}`}>React</div>
+        <div className={`${styles.listItem}`}>Communication</div>
+        <div className={`${styles.listItem}`}>Teamwork</div>
+        <div className={`${styles.listItem}`}>Problem Solving</div>
+        <div className={`${styles.listItem}`}>Leadership</div>
+      </div>
+    </div>
+
 
      <div
      onMouseEnter={()=>mouseItemEnter("experience")}
