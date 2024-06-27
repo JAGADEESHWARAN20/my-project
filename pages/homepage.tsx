@@ -273,7 +273,7 @@ const projects = [
   }
  }, [isClicked]);
 
- const fontabout = "font-['poppins'] xsm:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] xxl:text-[17px]   tracking-wide           lg:text-opacity-60 lg:hover:text-opacity-100 duration-300     sm:text-white    font-thin"
+ const fontabout = "font-['poppins'] sm:w-[100%] xsm:text-[22px] sm:text-[15px] md:text-[24px] lg:text-[15px] xl:text-[16px] xxl:text-[17px]   tracking-wide           lg:text-opacity-60 lg:hover:text-opacity-100 duration-300     sm:text-white    font-thin"
  const font = "xsm:text-[20px] sm:text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px] xxl:text-[70px]"
  const buttonstyles = {ResumeButton:"px-5 text-opacity-30 w-[250px] py-2 flex hover:gap-4 items-center duration-100 gap-2 text-slate-300 capitalize hover:text-slate-200 cursor-pointer duration-50 ",Button:"px-5 text-opacity-30 w-[250px] py-2 flex hover:gap-4 items-center duration-100 gap-2 text-slate-300 capitalize hover:text-slate-200 cursor-pointer duration-50 "}
 
@@ -284,7 +284,7 @@ const projects = [
     setIsExpanded(!isExpanded);
   };
   const styles = {
-  container: 'sm:w-[300px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
+  container: 'sm:w-[100%] lg:w-[600px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
   header: 'flex justify-between items-center p-4 cursor-pointer',
   headerText: 'text-lg font-semibold',
   icon: 'transform transition-transform duration-300',
@@ -300,9 +300,9 @@ const projects = [
 };
 
 
- return (
-  <div
-   className={`w-[100%] xsm:w-[100vw] h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
+  return (
+   <section className="w-[100%]">  <div
+   className={`w-[100%] xsm:w-[100%] h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
   >
      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
 
@@ -447,12 +447,12 @@ const projects = [
     </div>
     <div
      id="RightSIde"
-     className="  w-1/2  xsm:w-full  lg:overflow-scroll xsm:overflow-visible   overflow-scroll xsm:px-5   h-screen px-5 flex-col flex items-start xsm:items-start justify-start"
+     className="  w-1/2 lg:w-1/2 xsm:w-[100%]  lg:overflow-scroll xsm:overflow-visible   overflow-scroll xsm:px-5   h-screen px-5 flex-col flex items-start xsm:items-start justify-start"
      >
      <div
       onMouseEnter={()=>mouseItemEnter("about")}
       id="about"
-      className=" items-start flex lg:pt-[65px] sm:pb-[85px] sm:text-start xsm:pl-3 sm:pt-[20px] sm:py-[20px] lg:w-3/4 xsm:w-full     text-left    text-wrap      relative"
+      className=" items-start flex lg:pt-[65px] sm:pb-[85px] sm:text-start xsm:pl-3 sm:pt-[20px] sm:py-[20px] lg:w-3/4 xsm:w-[100%]     text-justify    text-wrap      relative"
       >
       <div className={`${fontabout} `}>
        {about}
@@ -484,12 +484,12 @@ const projects = [
      onMouseEnter={()=>mouseItemEnter("experience")}
       ref={experienceRef}
       id="experience"
-      className="items-start     flex px-3       py-[10px]     sm:py-[20px]    lg:w-3/4 relative"
+      className="items-start     flex px-3       py-[10px]     sm:py-[20px] sm:w-[100%] sm:mr-[5%]   lg:w-[100%] relative"
       >
       <div className="">
        <div className="font-poppins      group       pb-[20px] ">
             <div className="  xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px]     duration-100 py-5   lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white">
-            <div className="flex lg:w-auto   gap-2  items-start ml-3 cursor-pointer group relative py-4  text-[26px]  transition  duration-150">
+            <div className="flex lg:w-[100%]   gap-2  items-start mx-3 cursor-pointer group relative py-4  text-[26px]  transition  duration-150">
             {experiencetitle[0]} &bull; {experiencecompany[0]}
           <Link href={experienceLinks[0]}>
           <svg
@@ -514,7 +514,7 @@ const projects = [
           {experienceData[0]}
          </div>
 
-         <div className="w-[100vw]  flex  flex-wrap  gap-2 ml-3 mt-3 mb-6  text-[12px]"> {Keyskills.Workone.split(",").map(
+         <div className="w-[100%]  flex  flex-wrap  gap-2 mx-3 mt-3 mb-6  text-[12px]"> {Keyskills.Workone.split(",").map(
            (skill, index) => (
              <span key={index} className={styleskills}>
              {skill}
@@ -526,7 +526,7 @@ const projects = [
        </div>
        <div className="font-poppins      group    pb-3">
         <div className="lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px]    py-5        group-hover:bg-opacity-10">
-         <div className="flex lg:w-auto   gap-2  items-start cursor-pointer     ml-3    group     text-[26px]  relative          py-4           transition   duration-150">
+         <div className="flex lg:w-auto   gap-2  items-start cursor-pointer     mx-3    group     text-[26px]  relative          py-4           transition   duration-150">
           {experiencetitle[1]} &bull; {experiencecompany[1]}
           <Link href={experienceLinks[1]}>
           <svg
@@ -553,7 +553,7 @@ const projects = [
           >
           {experienceData[1]}
          </div>
-         <div className="w-[100vw]  flex  flex-wrap  gap-2  ml-3 mt-3  mb-6  text-[12px]">
+         <div className="w-[100%]  flex  flex-wrap  gap-2  mx-3 mt-3  mb-6  text-[12px]">
           {Keyskills.Worktwo.split(",").map(
             (skill, index) => (
               <span key={index} className={styleskills}>
@@ -566,7 +566,7 @@ const projects = [
        </div>
        <div className="font-poppins group pb-3 ">
         <div className="lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white    xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px] py-5  px-3 group-hover:bg-opacity-10">
-         <div className="flex lg:w-auto  gap-2 items-start ml-3   cursor-pointer group  relative   text-[26px] py-4 transition   duration-150">
+         <div className="flex lg:w-auto  gap-2 items-start mx-3   cursor-pointer group  relative   text-[26px] py-4 transition   duration-150">
           {experiencetitle[2]} &bull; {experiencecompany[2]}
           <Link href={experienceLinks[2]}>
           <svg
@@ -591,7 +591,7 @@ const projects = [
         >
           {experienceData[2]}
          </div>
-         <div className="w-[100vw]  flex flex-wrap   gap-2       ml-3   mt-3   mb-6    text-[12px]">
+         <div className="w-[100%]  flex flex-wrap   gap-2       mx-3   mt-3   mb-6    text-[12px]">
           {Keyskills.Workthree.split(",").map(
            (skill, index) => (
              <span key={index} className={styleskills}>
@@ -612,8 +612,8 @@ const projects = [
                 const skills = project.skills.split(',').map(skill => skill.trim());
 
                 return (
-                    <div key={projectIndex} style={{ marginBottom: '20px' }} className="bg-white relative flex flex-col bg-opacity-5 px-[50px] w-[100vw] py-[40px]  ">
-                        <div className="w-[100vw] flex justify-start items-center gap-[2%] pb-[12px]">
+                    <div key={projectIndex} style={{ marginBottom: '20px' }} className="bg-white relative flex flex-col bg-opacity-5 px-[50px] w-[100%] py-[40px]  ">
+                        <div className="w-[100%] flex justify-start items-center gap-[2%] pb-[12px]">
                         <h3 className="text-[20px] font-['poppins']">{project.title}</h3>
                         <Link href={project.Link}>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" className="hover:fill-white duration-150 cursor-pointer" viewBox="0 0 72 72">
@@ -621,7 +621,7 @@ const projects = [
                               </svg>
                         </Link>
                         </div>
-                        <p className=" p-[8px] py-[5px] mb-5 lg:rounded-full xsm:rounded-md xsm:w-1/3 bg-green-600 lg:w-1/6 items-center flex justify-center">{project.type}</p>
+                        <p className=" p-[8px] py-[5px] mb-5 lg:rounded-full xsm:rounded-md xsm:w-3/4 bg-green-600 lg:w-1/3 items-center flex justify-center">{project.type}</p>
                         <div className="flex gap-4 flex-wrap">
                             {skills.map((skill, skillIndex) => (
                                 <div
@@ -629,7 +629,7 @@ const projects = [
                                     style={{
                                       display:"flex",
                                     }}
-                                    className="bg-slate-800 px-[20px] py-[10px] rounded-full"
+                                    className="bg-slate-800 text-[12px] px-[20px] py-[10px] rounded-full"
                                 >
                                     {skill}
                                 </div>
@@ -666,7 +666,9 @@ const projects = [
     ></div>
     
     </div>
-  </div>
+    </div>
+    </section>
+
  );
 };
 
