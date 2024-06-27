@@ -90,8 +90,8 @@ const LoadingScreen: React.FC<{ onLoadingComplete: () => void }> = ({ onLoadingC
 
 const styles = {
   loadingContainer: {
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column' as 'column',
     zIndex: 9999,

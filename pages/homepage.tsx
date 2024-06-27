@@ -302,7 +302,7 @@ const projects = [
 
  return (
   <div
-   className={`w-[100vw] xsm:w-[100vw] h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
+   className={`w-[100%] xsm:w-[100vw] h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
   >
      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
 
@@ -333,7 +333,7 @@ const projects = [
    ) : null}
 
    <div className="  relative   flex lg:flex-row flex-col   h-[100%]  xsm:flex-col xxl:flex-row xl:flex-row items-center    justify-between   ">
-    <div className="   xl:w-3/4    xsm:w-[100vw]  lg:w-1/2   h-[100%] lg:h-[100%] xsm:h-auto      xxl:px-[200px] xl:pl-[20px] sm:px-[30px] flex  flex-col     items-start    relative justify-between   ">
+    <div className="   xl:w-3/4    xsm:w-[100%]  lg:w-1/2   h-[100%] lg:h-[100%] xsm:h-[100vh]      xxl:px-[200px] xl:pl-[20px] sm:px-[30px] flex  flex-col     items-start    relative justify-between   ">
      <div className="w-[310px]   relative">
       <div className="group">
       <h1 className={`font-['poppins']  ${font}   cursor-pointer  `}>
