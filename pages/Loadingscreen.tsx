@@ -94,7 +94,7 @@ const LoadingScreen: React.FC<{ onLoadingComplete: () => void }> = ({ onLoadingC
 
 const styles = {
   loadingContainer: {
-    width: '100%',
+    width: '100vw',
     height: '100vh',
     display: 'flex',
     flexDirection: 'column' as 'column',
