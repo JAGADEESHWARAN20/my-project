@@ -126,33 +126,51 @@ const handleDownload = () => {
    localStorage.setItem("darkMode", (!isClicked).toString());
   }
  };
- const [isOpen, setIsOpen] = useState(false);
- const containerRef = useRef<HTMLDivElement>(null); 
+   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
- const handleDrag = (e: DragEvent) => {
-  if (e.clientX > 50) {
-   setIsOpen(true);
-  }
- };
+  let touchStartX = 0;
+  let touchEndX = 0;
 
- const handleClickOutside = (e: MouseEvent) => {
-  if (
-   containerRef.current &&
-   !containerRef.current.contains(e.target as Node)
-  ) {
-   setIsOpen(false);
-  }
- };
-
- useEffect(() => {
-  document.addEventListener("drag", handleDrag);
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-   document.removeEventListener("drag", handleDrag);
-   document.removeEventListener("mousedown", handleClickOutside);
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX = e.touches[0].clientX;
   };
- }, []);
 
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      // Swiped left
+      setIsOpen(false);
+    }
+
+    if (touchEndX - touchStartX > 50) {
+      // Swiped right
+      setIsOpen(true);
+    }
+  };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
  useEffect(() => {
   if (isClicked) {
    document.body.classList.remove("bg-[#948979]");
@@ -219,7 +237,7 @@ const handleDownload = () => {
   
   ],
   [
-  
+" As a Web Developer Intern at Exposys Data Labs: Created a Hotel Table Reservation System using MongoDB, Node.js, HTML, CSS, and Tailwind CSS. Simplified booking processes for customers and staff with an intuitive web app. Designed responsive interfaces and implemented dynamic features with JavaScript. Managed data using MongoDB, ensuring scalability and efficient CRUD operations. Collaborated with teams, tested extensively, and documented processes for project success."
   ],
   [
 "As a graphic designer, I've mastered typography, font selection, branding guidelines, design principles, color management (both RGB and CMYK), UX design, and photo editing, while also developing strong soft skills in collaboration, emotional intelligence, communication, time management, creativity, and storytelling."
@@ -278,7 +296,7 @@ const projects = [
     setIsExpanded(!isExpanded);
   };
   const styles = {
-  container: 'sm:w-[400px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
+  container: 'sm:w-[300px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
   header: 'flex justify-between items-center p-4 cursor-pointer',
   headerText: 'text-lg font-semibold',
   icon: 'transform transition-transform duration-300',
@@ -506,7 +524,7 @@ const projects = [
       <div className="">
        <div className="font-poppins      group       pb-[20px] ">
             <div className="  xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px]     duration-100 py-5   lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white">
-            <div className="flex lg:w-auto   gap-2  items-start ml-3 cursor-pointer group relative py-4  text-[40px]  transition  duration-150">
+            <div className="flex lg:w-auto   gap-2  items-start ml-3 cursor-pointer group relative py-4  text-[26px]  transition  duration-150">
             {experiencetitle[0]} &bull; {experiencecompany[0]}
           <Link href={experienceLinks[0]}>
           <svg
@@ -531,7 +549,7 @@ const projects = [
           {experienceData[0]}
          </div>
 
-         <div className="w-full  flex  flex-wrap  gap-2 ml-3 mt-3 mb-6  text-[12px]"> {Keyskills.Workone.split(",").map(
+         <div className="w-[100vw]  flex  flex-wrap  gap-2 ml-3 mt-3 mb-6  text-[12px]"> {Keyskills.Workone.split(",").map(
            (skill, index) => (
              <span key={index} className={styleskills}>
              {skill}
@@ -543,7 +561,7 @@ const projects = [
        </div>
        <div className="font-poppins      group    pb-3">
         <div className="lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px]    py-5        group-hover:bg-opacity-10">
-         <div className="flex lg:w-auto   gap-2  items-start cursor-pointer     ml-3    group     text-[40px]       relative          py-4           transition   duration-150">
+         <div className="flex lg:w-auto   gap-2  items-start cursor-pointer     ml-3    group     text-[26px]  relative          py-4           transition   duration-150">
           {experiencetitle[1]} &bull; {experiencecompany[1]}
           <Link href={experienceLinks[1]}>
           <svg
@@ -570,7 +588,7 @@ const projects = [
           >
           {experienceData[1]}
          </div>
-         <div className="w-full  flex  flex-wrap  gap-2  ml-3 mt-3  mb-6  text-[12px]">
+         <div className="w-[100vw]  flex  flex-wrap  gap-2  ml-3 mt-3  mb-6  text-[12px]">
           {Keyskills.Worktwo.split(",").map(
             (skill, index) => (
               <span key={index} className={styleskills}>
@@ -583,7 +601,7 @@ const projects = [
        </div>
        <div className="font-poppins group pb-3 ">
         <div className="lg:bg-transparent    lg:group-hover:bg-opacity-10 lg:group-hover:bg-white    xsm:bg-white xsm:bg-opacity-5 xsm:px-[20px] py-5  px-3 group-hover:bg-opacity-10">
-         <div className="flex lg:w-auto  gap-2 items-start ml-3   cursor-pointer group  relative   text-[40px] py-4 transition   duration-150">
+         <div className="flex lg:w-auto  gap-2 items-start ml-3   cursor-pointer group  relative   text-[26px] py-4 transition   duration-150">
           {experiencetitle[2]} &bull; {experiencecompany[2]}
           <Link href={experienceLinks[2]}>
           <svg
@@ -608,7 +626,7 @@ const projects = [
         >
           {experienceData[2]}
          </div>
-         <div className="w-full  flex flex-wrap   gap-2       ml-3   mt-3   mb-6    text-[12px]">
+         <div className="w-[100vw]  flex flex-wrap   gap-2       ml-3   mt-3   mb-6    text-[12px]">
           {Keyskills.Workthree.split(",").map(
            (skill, index) => (
              <span key={index} className={styleskills}>
@@ -629,9 +647,9 @@ const projects = [
                 const skills = project.skills.split(',').map(skill => skill.trim());
 
                 return (
-                    <div key={projectIndex} style={{ marginBottom: '20px' }} className="bg-white relative flex flex-col bg-opacity-5 px-[50px] w-full py-[40px]  ">
-                        <div className="w-full flex justify-between pb-[12px]">
-                        <h3 className="text-[50px] font-['poppins']">{project.title}</h3>
+                    <div key={projectIndex} style={{ marginBottom: '20px' }} className="bg-white relative flex flex-col bg-opacity-5 px-[50px] w-[100vw] py-[40px]  ">
+                        <div className="w-[100vw] flex justify-start items-center gap-[2%] pb-[12px]">
+                        <h3 className="text-[20px] font-['poppins']">{project.title}</h3>
                         <Link href={project.Link}>
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" className="hover:fill-white duration-150 cursor-pointer" viewBox="0 0 72 72">
                               <path d="M 36 12 C 22.745 12 12 22.745 12 36 C 12 49.255 22.745 60 36 60 C 49.255 60 60 49.255 60 36 C 60 22.745 49.255 12 36 12 z M 36 20 C 44.837 20 52 27.163 52 36 C 52 43.284178 47.128298 49.420174 40.46875 51.355469 C 40.198559 51.103128 39.941627 50.74363 39.953125 50.285156 C 39.980125 49.233156 39.953125 46.778953 39.953125 45.876953 C 39.953125 44.328953 38.972656 43.230469 38.972656 43.230469 C 38.972656 43.230469 46.654297 43.316141 46.654297 35.119141 C 46.654297 31.957141 45.003906 30.310547 45.003906 30.310547 C 45.003906 30.310547 45.872125 26.933953 44.703125 25.501953 C 43.393125 25.359953 41.046922 26.753297 40.044922 27.404297 C 40.044922 27.404297 38.457406 26.753906 35.816406 26.753906 C 33.175406 26.753906 31.587891 27.404297 31.587891 27.404297 C 30.586891 26.753297 28.239687 25.360953 26.929688 25.501953 C 25.760688 26.933953 26.628906 30.310547 26.628906 30.310547 C 26.628906 30.310547 24.974609 31.956141 24.974609 35.119141 C 24.974609 43.316141 32.65625 43.230469 32.65625 43.230469 C 32.65625 43.230469 31.782197 44.226723 31.693359 45.652344 C 31.180078 45.833418 30.48023 46.048828 29.8125 46.048828 C 28.2025 46.048828 26.978297 44.483766 26.529297 43.759766 C 26.086297 43.045766 25.178031 42.447266 24.332031 42.447266 C 23.775031 42.447266 23.503906 42.726922 23.503906 43.044922 C 23.503906 43.362922 24.285781 43.585781 24.800781 44.175781 C 25.887781 45.420781 25.866281 48.21875 29.738281 48.21875 C 30.196553 48.21875 31.021102 48.11542 31.677734 48.025391 C 31.674106 48.90409 31.663893 49.74536 31.677734 50.285156 C 31.688158 50.700354 31.476914 51.032045 31.236328 51.279297 C 24.726159 49.25177 20 43.177886 20 36 C 20 27.163 27.163 20 36 20 z"></path>
