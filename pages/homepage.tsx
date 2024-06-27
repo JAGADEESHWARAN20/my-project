@@ -126,29 +126,24 @@ const handleDownload = () => {
    localStorage.setItem("darkMode", (!isClicked).toString());
   }
  };
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  let touchStartX = 0;
-  let touchEndX = 0;
+  let tapStartX = 0;
+  let tapEndX = 0;
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartX = e.touches[0].clientX;
+  const handleTapStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    tapStartX = e.touches[0].clientX;
   };
 
-  const handleTouchMove = (e: TouchEvent) => {
-    touchEndX = e.touches[0].clientX;
-  };
+  const handleTapEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    tapEndX = e.changedTouches[0].clientX;
 
-  const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 50) {
-      // Swiped left
-      setIsOpen(false);
-    }
+    // Calculate the difference in X coordinates
+    const deltaX = tapEndX - tapStartX;
 
-    if (touchEndX - touchStartX > 50) {
-      // Swiped right
-      setIsOpen(true);
+    if (Math.abs(deltaX) < 5) { // Adjust threshold for tap sensitivity
+      setIsOpen(!isOpen); // Toggle isOpen on tap
     }
   };
 
@@ -160,15 +155,8 @@ const handleDownload = () => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
  useEffect(() => {
@@ -314,7 +302,7 @@ const projects = [
 
  return (
   <div
-   className={`w-[100vw ] xsm:w-full h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
+   className={`w-[100vw] xsm:w-[100vw] h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
   >
      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
 
@@ -345,7 +333,7 @@ const projects = [
    ) : null}
 
    <div className="  relative   flex lg:flex-row flex-col   h-[100%]  xsm:flex-col xxl:flex-row xl:flex-row items-center    justify-between   ">
-    <div className="   xl:w-3/4    xsm:w-full  lg:w-1/2   h-[100%] lg:h-[100%] xsm:h-auto      xxl:px-[200px] xl:pl-[20px] sm:px-[30px] flex  flex-col     items-start    relative justify-between   ">
+    <div className="   xl:w-3/4    xsm:w-[100vw]  lg:w-1/2   h-[100%] lg:h-[100%] xsm:h-auto      xxl:px-[200px] xl:pl-[20px] sm:px-[30px] flex  flex-col     items-start    relative justify-between   ">
      <div className="w-[310px]   relative">
       <div className="group">
       <h1 className={`font-['poppins']  ${font}   cursor-pointer  `}>
@@ -426,51 +414,28 @@ const projects = [
 
 
      </div>
-
-   
-     <div
-      ref={containerRef}
-      draggable={true}
-      className={`fixed    top-1/2 right-0  z-[999999999]   transform   cursor-move  -translate-y-1/2 flex    flex-col       gap-2        rounded-[40px] py-4                px-2            transition-all duration-300 bg-white   bg-opacity-30 backdrop-blur-md ease-in-out ${
-        isOpen ? "right-[150px] sm:right-[30px]" : "right-[-17px]"
-      }`}
-     >
+ <div
+      className={`fixed top-1/2 right-0 z-[999999999] transform cursor-pointer -translate-y-1/2 flex flex-col gap-2 rounded-[40px] py-4 px-2 transition-all duration-300 bg-white bg-opacity-30 backdrop-blur-md ease-in-out ${isOpen ? "right-[150px] sm:right-[30px]" : "right-[-17px]"}`}
+      onClick={() => setIsOpen(!isOpen)}
+      style={{ touchAction: 'manipulation' }} // Ensures proper touch handling
+    >
       <div className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
-       <Link  href={sociallinks[0]}>
-       <FaFacebook
-        style={{
-          color:
-          "rgba(255, 255, 255, 0.7)",
-          width: "20px",
-        }}
-        />
-       </Link>
-      </div>
-      <div className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
-      <Link href={sociallinks[1]}>
-       <FaTwitter
-        style={{
-          color:
-          "rgba(255, 255, 255, 0.7)",
-          width: "20px",
-        }}
-        />
+        <Link href={sociallinks[0]}>
+          <FaFacebook style={{ color: "rgba(255, 255, 255, 0.7)", width: "20px" }} />
         </Link>
       </div>
-      <div  className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
-       <Link href={sociallinks[2]}>
-       <FaInstagram
-        style={{
-          color:
-          "rgba(255, 255, 255, 0.7)",
-          width: "20px",
-        }}
-        />
+      <div className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
+        <Link href={sociallinks[1]}>
+          <FaTwitter style={{ color: "rgba(255, 255, 255, 0.7)", width: "20px" }} />
         </Link>
       </div>
-     </div>
-    
-     
+      <div className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
+        <Link href={sociallinks[2]}>
+          <FaInstagram style={{ color: "rgba(255, 255, 255, 0.7)", width: "20px" }} />
+        </Link>
+      </div>
+         </div>
+         
      <div className=" mt-5 group w-[150px] text-[15px] justify-between flex cursor-pointer">
        <div className="">
         <Link href={'mailto:jagadeeshwaransp5@gmail.com'}>Let's Discuss</Link>
