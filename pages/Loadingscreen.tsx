@@ -75,11 +75,7 @@ const LoadingScreen: React.FC<{ onLoadingComplete: () => void }> = ({ onLoadingC
       })
     }
     });
-    //  backgroundColor:'radial-gradient(circle, rgba(66,130,198,1) 0%, rgba(0,7,9,1) 100%),',
-      
 
-    // Animate the container's height and position after the text and line animations
-   
 
     return () => clearInterval(interval);
   }, [onLoadingComplete]);
@@ -101,24 +97,24 @@ const styles = {
     zIndex: 9999,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute' as 'absolute',
+    position: 'fixed' as 'fixed', // Use fixed position to cover the viewport
     top: 0,
     left: 0,
     backgroundColor: '#000000',
     transition: 'background-color 5s linear',
-    overflow: 'hidden', 
+    overflow: 'hidden',
   },
   loadingText: {
     fontSize: '10em',
     color: 'white',
-    zindex:'99',
+    zIndex: 10000, // Ensure it's on top of the container
   },
   loadingLine: {
     width: '0%', // Start with width 0
     height: '10px',
     backgroundColor: 'white',
-    zindex:'-99',
-    marginTop:'200px',
+    zIndex: 9998, // Ensure it's below the text
+    marginTop: '200px',
     position: 'absolute' as 'absolute', // Use absolute positioning to keep it at the bottom
     left: '0',
   },

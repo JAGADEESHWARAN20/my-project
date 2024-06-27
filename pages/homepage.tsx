@@ -278,7 +278,7 @@ const projects = [
     setIsExpanded(!isExpanded);
   };
   const styles = {
-  container: 'sm:w-[490px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
+  container: 'sm:w-[400px] lg:w-[700px] sm:mx-[3%] lg:mx-[0%] bg-blue-200 bg-opacity-20 text-white rounded-lg',
   header: 'flex justify-between items-center p-4 cursor-pointer',
   headerText: 'text-lg font-semibold',
   icon: 'transform transition-transform duration-300',
@@ -296,7 +296,7 @@ const projects = [
 
  return (
   <div
-   className={`w-full xsm:w-full h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
+   className={`w-[100vw ] xsm:w-full h-[100vh]  lg:fixed xsm:relative text-white    py-9 fixed  `}
   >
      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
 
@@ -413,8 +413,8 @@ const projects = [
      <div
       ref={containerRef}
       draggable={true}
-      className={`fixed    top-1/2 right-4  z-[999999999]   transform   cursor-move  -translate-y-1/2 flex    flex-col       gap-2        rounded-[40px] py-4                px-2            transition-all duration-300 bg-white   bg-opacity-30 backdrop-blur-md ease-in-out ${
-        isOpen ? "right-[150px] sm:right-[30px]" : "right-[-47px]"
+      className={`fixed    top-1/2 right-0  z-[999999999]   transform   cursor-move  -translate-y-1/2 flex    flex-col       gap-2        rounded-[40px] py-4                px-2            transition-all duration-300 bg-white   bg-opacity-30 backdrop-blur-md ease-in-out ${
+        isOpen ? "right-[150px] sm:right-[30px]" : "right-[-17px]"
       }`}
      >
       <div className="social-icon cursor-pointer" style={{ backgroundColor: "transparent" }}>
