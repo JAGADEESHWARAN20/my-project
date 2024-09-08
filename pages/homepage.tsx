@@ -474,7 +474,7 @@ const Portfolio: React.FC = () => {
             {/* Technical Skills Section */}
             <div className="pt-4">
               <span className="text-[25px]">-o Technical Skills</span><br />
-              <div className="text-white font-[700] font-['inter'] text-[17px] pt-3 capitalize text-opacity-70 flex flex-row flex-wrap w-full">
+              <div className="text-white font-[500] font-['inter'] text-[17px] pt-3 capitalize text-opacity-70 flex flex-row flex-wrap w-full">
                 {ProfessionalSkills.Workone.split(',').map(skill => (
                   <span className="pl-2 pb-2" key={skill.trim()}>
                     <span className="text-green-500">-o</span> {skill}
