@@ -12,7 +12,7 @@ import { BiDownload } from "react-icons/bi";
 const Portfolio: React.FC = () => {
 
   const handleDownload = () => {
-    const pdfPath = '/resume.pdf';
+    const pdfPath = '/resume.pdf'; // Adjust the path as per your project structure
 
     // Create a link element
     const link = document.createElement('a');
@@ -254,7 +254,7 @@ const Portfolio: React.FC = () => {
 
 
 
-  const sociallinks = ["https://facebook.com/jagadeeshwaran", "https://twitter.com/jagadeeshodayar", "https://instagram.com/jagadeeshwaran.insta"]
+  const sociallinks = ["https://www.facebook.com/profile.php?id=100035290433724&mibextid=JRoKGi", "https://twitter.com/jagadeeshodayar", "https://instagram.com/jagadeeshwaran.insta"]
 
 
 
@@ -474,15 +474,15 @@ const Portfolio: React.FC = () => {
             {/* Technical Skills Section */}
             <div className="pt-4">
               <span className="text-[25px]">-o Technical Skills</span><br />
-              <div className="text-white  font-['inter'] text-[17px] pt-3 capitalize  flex flex-row flex-wrap w-full">
+              <div className="text-white text-[19px] pt-3 capitalize text-opacity-90 flex flex-row flex-wrap w-full">
                 {ProfessionalSkills.Workone.split(',').map(skill => (
                   <span className="pl-2 pb-2" key={skill.trim()}>
-                    <span className="text-green-500">-o</span> {skill}
+                    <span className="text-green-500 font-[400] text-[16px]">-o</span> {skill}
                   </span>
                 ))}
                 {ProfessionalSkills.Worktwo.split(',').map(skill => (
-                  <span className="pl-2 pb-2  font-['inter']" key={skill.trim()}>
-                    <span className="text-green-500">-o</span> {skill}
+                  <span className="pl-2 pb-2" key={skill.trim()}>
+                    <span className="text-green-500 font-[400] text-[16px]">-o</span> {skill}
                   </span>
                 ))}
               </div>
@@ -491,10 +491,10 @@ const Portfolio: React.FC = () => {
             {/* Professional Skills Section */}
             <div className="pt-6">
               <span className="text-[23px]">-o Professional Skills</span><br />
-              <div className="text-white text-[17px] pt-3 capitalize text-opacity-70 flex flex-row flex-wrap w-full">
+              <div className="text-white text-[19px] pt-3 capitalize text-opacity-90 flex flex-row flex-wrap w-full">
                 {ProfessionalSkills.Workthree.split(',').map(skill => (
                   <span className="pl-2 pb-2" key={skill.trim()}>
-                    <span className="text-green-500">-o</span> {skill}
+                    <span className="text-green-500 font-[400] text-[16px]">-o</span> {skill}
                   </span>
                 ))}
               </div>
