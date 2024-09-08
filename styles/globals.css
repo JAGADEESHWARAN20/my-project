@@ -9,8 +9,31 @@ body::-webkit-scrollbar {
 
 body {
   
-  scrollbar-width: none; /* Firefox */
+ /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer/Edge */
+}
+
+.portfolio0{
+  background-image: url('../styles/assets/portfolioItem1.png');
+}
+.portfolio1{
+  background-image: url('../styles/assets/portfolioItem3.png');
+  height: 260px;
+}
+.portfolio2{
+  background-image: url('../styles/assets/portfolioItem2.png');
+}.portfolio3{
+  background-image: none;
+  border: transparent;
+  height: 0px;
+}.portfolio4{
+  background-image: none;
+  border: transparent;
+  height: 0px;
+}.portfolio5{
+  background-image: none;
+  border: transparent;
+  height: 0px;
 }
 
 /* Add scroll effect */

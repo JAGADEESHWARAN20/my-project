@@ -8,8 +8,11 @@ import { BiDownload } from "react-icons/bi";
 
 
 
-
 const Portfolio: React.FC = () => {
+
+
+
+
 
   const handleDownload = () => {
     const pdfPath = '/resume.pdf'; // Adjust the path as per your project structure
@@ -259,11 +262,11 @@ const Portfolio: React.FC = () => {
 
 
   const projects = [
-    { title: "Portfolio v1", type: "Individual", skills: "Javascript, reactjs, tailwindcss, timeline js", Link: 'https://github.com/JAGADEESHWARAN20/Personal-Portfolio-Using-React-Js' },
-    { title: "Shop With Dashboard", type: "Individual", skills: "Typescript, React js, Next js, mongodb, shadcnUI, toast , Rest API, Prisma DB", Link: 'https://github.com/JAGADEESHWARAN20/Shopwithdashboard' },
-    { title: "Movie-App", type: "Internship", skills: "Javascript, SCSS, React JS, TMDB Api, Routing", Link: 'https://movie-r-app.vercel.app/' },
-    { title: "3JS - Portfolio", type: "Individual", skills: " React js, Three js, TimeLine JS, Email JS", Link: 'https://github.com/JAGADEESHWARAN20/3D-Portfolio' },
-    { title: "Resume-Builder", type: "University", skills: "Python , TTkbootstrap, Tkinter, Mongodb, Sqlite, Pydocs, ATS ", Link: 'https://github.com/JAGADEESHWARAN20/Resume-Generator' },
+    { title: "Portfolio v1", type: "Individual", img: "../styles/assets/portfolioItem1.png", skills: "Javascript, reactjs, tailwindcss, timeline js", Link: 'https://github.com/JAGADEESHWARAN20/Personal-Portfolio-Using-React-Js' },
+    { title: "Shop With Dashboard", type: "Individual", img: "", skills: "Typescript, React js, Next js, mongodb, shadcnUI, toast , Rest API, Prisma DB", Link: 'https://github.com/JAGADEESHWARAN20/Shopwithdashboard' },
+    { title: "Movie-App", type: "Internship", img: "../styles/assets/portfolioItem2.png", skills: "Javascript, SCSS, React JS, TMDB Api, Routing", Link: 'https://movie-r-app.vercel.app/' },
+    { title: "3JS - Portfolio", type: "Individual", img: "", skills: " React js, Three js, TimeLine JS, Email JS", Link: 'https://github.com/JAGADEESHWARAN20/3D-Portfolio' },
+    { title: "Resume-Builder", type: "University", img: "", skills: "Python , TTkbootstrap, Tkinter, Mongodb, Sqlite, Pydocs, ATS ", Link: 'https://github.com/JAGADEESHWARAN20/Resume-Generator' },
   ];
 
   const projectRef = useRef<HTMLDivElement>(null);
@@ -636,8 +639,8 @@ const Portfolio: React.FC = () => {
               const skills = project.skills.split(',').map(skill => skill.trim());
 
               return (
-                <div key={projectIndex} style={{ marginBottom: '20px' }} className="bg-white relative flex flex-col bg-opacity-5 px-[50px] w-[100%] py-[40px]  ">
-                  <div className="w-[100%] flex justify-start items-center gap-[2%] pb-[12px]">
+                <div key={projectIndex} style={{ marginBottom: '20px' }} className=" relative flex flex-col bg-opacity-5  w-[100%]  ">
+                  <div className="w-[100%] flex justify-between items-center gap-[2%] pb-[12px]">
                     <h3 className="text-[20px] font-['poppins']">{project.title}</h3>
                     <Link href={project.Link}>
                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" className="fill-white duration-150 cursor-pointer" viewBox="0 0 72 72">
@@ -646,7 +649,7 @@ const Portfolio: React.FC = () => {
                     </Link>
                   </div>
                   <p className=" p-[8px] py-[5px] mb-5 lg:rounded-full xsm:rounded-md xsm:w-3/4 text-green-400 font-bold border lg:w-1/3 items-center flex justify-center">{project.type}</p>
-                  <div className="flex gap-4 flex-wrap bg-white justify-start flex-row bg-opacity-15 px-3 py-3 rounded-md">
+                  {/* <div className="flex gap-4 flex-wrap bg-white justify-start flex-row bg-opacity-15 px-3 py-3 rounded-md">
                     {skills.map((skill, skillIndex) => (
                       <div
                         key={skillIndex}
@@ -658,7 +661,8 @@ const Portfolio: React.FC = () => {
                         -O {skill}
                       </div>
                     ))}
-                  </div>
+                  </div> */}
+                  <div className={`w-full rounded-lg border-white border h-[180px] object-contain bg-cover bg-center portfolio${projectIndex}`}></div>
                 </div>
               );
             })}
