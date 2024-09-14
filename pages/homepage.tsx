@@ -9,10 +9,10 @@ import { BiDownload } from "react-icons/bi";
 
 const Portfolio: React.FC = () => {
   const handleDownload = () => {
-    const pdfPath = '/resume.pdf'; 
+    const pdfPath = '/resume.pdf';
     const link = document.createElement('a');
     link.href = pdfPath;
-    link.download = 'resume.pdf'; 
+    link.download = 'resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
