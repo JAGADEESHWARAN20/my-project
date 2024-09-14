@@ -2,31 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
-
 import LoadingScreen from "./Loadingscreen";
 import { BiDownload } from "react-icons/bi";
 
 
 
 const Portfolio: React.FC = () => {
-
-
-
-
-
   const handleDownload = () => {
-    const pdfPath = '/resume.pdf'; // Adjust the path as per your project structure
-
-    // Create a link element
+    const pdfPath = '/resume.pdf'; 
     const link = document.createElement('a');
     link.href = pdfPath;
-    link.download = 'resume.pdf'; // Set the desired file name for download
+    link.download = 'resume.pdf'; 
     document.body.appendChild(link);
-
-    // Trigger the click event to start download
     link.click();
-
-    // Clean up
     document.body.removeChild(link);
   };
 
